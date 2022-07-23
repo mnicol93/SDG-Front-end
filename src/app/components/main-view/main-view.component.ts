@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Comarca } from 'src/app/classes/comarca';
-import { GetService } from 'src/app/services/get.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-main-view',
@@ -8,19 +6,12 @@ import { GetService } from 'src/app/services/get.service';
   styleUrls: ['./main-view.component.css']
 })
 export class MainViewComponent implements OnInit {
-  public comarcas: any;
 
+  constructor() { 
 
-  constructor(private service:GetService) { 
-    this.comarcas = []
   }
 
   ngOnInit(): void {
-    this.service.getComarcas()
-    .subscribe(response => {
-      this.comarcas = response;
-      console.log(this.comarcas.feed.entry[0].title);
-    })
 
   }
 
