@@ -2,6 +2,11 @@
     <app-menu 
         id="menu"
         (clickedComarca)="cambioComarca($event)"
-    ></app-menu>
-    <app-main-view id="main-view"></app-main-view>
+    >
+    </app-menu>
+    <app-main-view 
+        id="main-view"
+        [comarca]="comarcaActual"
+        >
+    </app-main-view>
 </div>

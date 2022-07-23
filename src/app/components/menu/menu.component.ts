@@ -16,7 +16,7 @@ export class MenuComponent implements OnInit {
     this.comarcas = []
   }
 
-  clickComarca(comarca: Comarca): void {
+  clickComarca(comarca: any): void {
     console.log(comarca);
     this.clickedComarca.emit(comarca);
   }
