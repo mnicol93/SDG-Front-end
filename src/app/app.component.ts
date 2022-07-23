@@ -9,7 +9,7 @@ import { Comarca } from 'src/app/classes/comarca';
 export class AppComponent {
   title = 'Prueba frontend SDG Group';
 
-  comarcaActual: Comarca = new Comarca();
+  comarcaActual: Comarca;
 
   cambioComarca(comarca:Comarca): void{
     this.comarcaActual = comarca;
