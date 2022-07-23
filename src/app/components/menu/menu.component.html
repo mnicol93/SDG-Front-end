@@ -1,0 +1,9 @@
+<ul class="lista-comarcas">
+    <li 
+        class="lista-grupo-comarcas"
+        *ngFor="let comarca of comarcas.feed.entry"
+        title="{{ comarca.title }}"
+        (click)="clickComarca(comarca)">
+        {{ comarca.title }}
+    </li>
+</ul>

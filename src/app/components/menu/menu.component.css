@@ -1,0 +1,19 @@
+ul{
+    margin: 2px;
+    padding: 0;
+    margin-left: 3px;
+}
+li{
+    
+    background-color: blue;
+    color: white;
+    
+    cursor: pointer;
+
+    padding: .1em;
+    border-left: 4px solid transparent;
+}
+li:hover{
+    color: yellow;
+    border-left: 4px solid #bfb1c1;
+}
