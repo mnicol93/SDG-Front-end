@@ -9,7 +9,7 @@ import { Comarca } from 'src/app/classes/comarca';
 export class MenuComponent implements OnInit {
 
   public comarcas: any;
-
+  // Envia informacion a otro Componente
   @Output() clickedComarca: EventEmitter<Comarca> = new EventEmitter();
 
   constructor(private service:GetService) { 
@@ -25,7 +25,6 @@ export class MenuComponent implements OnInit {
     this.service.getComarcas()
     .subscribe(response => {
       this.comarcas = response;
-      console.log(this.comarcas.feed.entry[0].title);
     })
 
   }
