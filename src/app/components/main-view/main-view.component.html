@@ -1,3 +1,6 @@
 <p
-    *ngIf="comarca"    
->{{ comarca.title }}</p>
+    *ngIf="comarca; else noComarca"    
+>{{ comarca.title }} <br />
+Habitantes: {{ comarca['cross:DataSet']['cross:Section']['cross:Obs'][0].OBS_VALUE}}
+</p>
+<ng-template #noComarca>Selecciona una Comarca para comenzar.</ng-template>

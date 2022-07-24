@@ -17,7 +17,7 @@ export class MenuComponent implements OnInit {
   }
 
   clickComarca(comarca: any): void {
-    console.log(comarca);
+    console.log(JSON.stringify(comarca['cross:DataSet']['cross:Section']['cross:Obs'][0].OBS_VALUE));
     this.clickedComarca.emit(comarca);
   }
 
@@ -26,6 +26,5 @@ export class MenuComponent implements OnInit {
     .subscribe(response => {
       this.comarcas = response;
     })
-
   }
 }
