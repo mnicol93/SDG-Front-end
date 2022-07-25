@@ -17,3 +17,14 @@ li:hover{
     color: yellow;
     border-left: 4px solid #bfb1c1;
 }
+h2{    
+    background-color: blue;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    margin-bottom: 1px;
+    margin-top: 4px;
+}
