@@ -1,6 +1,21 @@
+<h1>  {{ comarca.title }} </h1>
+<br />
 <p
     *ngIf="comarca; else noComarca"    
->{{ comarca.title }} <br />
-Habitantes: {{ comarca['cross:DataSet']['cross:Section']['cross:Obs'][0].OBS_VALUE}}
+>
+    <app-chart
+        [comarca]="comarca"
+    ></app-chart>
+
+  
+    Masculino: 
+    {{ comarca['cross:DataSet']['cross:Section']['cross:Obs'][0].OBS_VALUE }}
+    <br />
+    Femenino: 
+    {{ comarca['cross:DataSet']['cross:Section']['cross:Obs'][1].OBS_VALUE }}
+    <br />
+    <b>Total:
+    {{ comarca['cross:DataSet']['cross:Section']['cross:Obs'][2].OBS_VALUE }}
+    </b>
 </p>
 <ng-template #noComarca>Selecciona una Comarca para comenzar.</ng-template>

@@ -1,5 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
+import * as Highcharts from 'highcharts';
 import { Comarca } from 'src/app/classes/comarca';
+
+Highcharts.setOptions({
+  title: {
+    text: "Probando"
+  }
+})
 
 @Component({
   selector: 'app-main-view',
