@@ -11,13 +11,13 @@ export class MenuComponent implements OnInit {
   public comarcas: any;
   // Envia informacion a otro Componente
   @Output() clickedComarca: EventEmitter<Comarca> = new EventEmitter();
+  @Output() totalComarcas: EventEmitter<any> = new EventEmitter();
 
   constructor(private service:GetService) { 
     this.comarcas = []
   }
 
   clickComarca(comarca: any): void {
-    // console.log(JSON.stringify(comarca['cross:DataSet']['cross:Section']['cross:Obs'][0].OBS_VALUE));
     this.clickedComarca.emit(comarca);
   }
 
@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit {
     this.service.getComarcas()
     .subscribe(response => {
       this.comarcas = response;
-      console.log(typeof this.comarcas);
+      this.totalComarcas.emit(this.comarcas);
     })
   }
 }

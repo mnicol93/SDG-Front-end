@@ -16,13 +16,12 @@ Highcharts.setOptions({
 export class MainViewComponent implements OnInit {
 
   @Input() comarca: any;
+  @Input() listaComarcas: any;
 
   constructor() { 
 
   }
-
   ngOnInit(): void {
-
   }
 
 }

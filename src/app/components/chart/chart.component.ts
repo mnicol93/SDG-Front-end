@@ -54,13 +54,47 @@ export class ChartComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChange): void {
     if(this.comarca != 'undefined'){
-      //console.log(this.comarca['cross:DataSet']['cross:Section']['cross:Obs'][0].OBS_VALUE);
-      this.updateChart();
-
+      if(typeof this.comarca != 'object'){
+        // LLama a updateChart para una Comarca.
+        this.updateChart();
+      }else{
+        // Llama updateChart para todas las Comarcas.
+        this.updateChartTotal();
+      }
     }
   }
 
   updateChart(){
+    // Convierte a type: number; para mostrar en el grafico
+    let masculino: number = +this.comarca['cross:DataSet']['cross:Section']['cross:Obs'][0].OBS_VALUE;
+    let femenino: number = +this.comarca['cross:DataSet']['cross:Section']['cross:Obs'][1].OBS_VALUE;
+    let total: number = +this.comarca['cross:DataSet']['cross:Section']['cross:Obs'][2].OBS_VALUE;
+
+    this.chartOptions = { // required
+      chart: {
+        renderTo: 'container'
+      },
+      title: { text: this.comarca.title },
+      xAxis: {
+        categories: ['Masculino', 'Femenino', 'Total'],
+        title: { text: 'Comarcas' }
+      },
+      yAxis: {
+        categories: ['masc', 'fem', 'total'],
+        title: { text: 'Habitantes' }
+      },
+      series: [{
+        name: 'Habitantes por genero por comarca',
+        data: [ 
+          masculino,
+          femenino,
+          total
+        ],
+        type: 'bar'
+      }]
+    }; 
+  }
+  updateChartTotal(){
     // Convierte a type: number; para mostrar en el grafico
     let masculino: number = +this.comarca['cross:DataSet']['cross:Section']['cross:Obs'][0].OBS_VALUE;
     let femenino: number = +this.comarca['cross:DataSet']['cross:Section']['cross:Obs'][1].OBS_VALUE;

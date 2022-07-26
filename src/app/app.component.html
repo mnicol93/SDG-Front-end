@@ -1,17 +1,19 @@
-<header>
-    <app-navbar></app-navbar>
-</header>
+
 <main>
-    
+    <header>
+        <app-navbar></app-navbar>
+    </header>
 <div id="app">
     <app-menu 
         id="menu"
         (clickedComarca)="cambioComarca($event)"
+        (totalComarcas)="enviaComarcas($event)"
     >
     </app-menu>
     <app-main-view 
         id="main-view"
         [comarca]="comarcaActual"
+        [listaComarcas]="listaComarcas"
         >
     </app-main-view>
 </div>

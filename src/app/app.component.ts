@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+
+import { GetService } from 'src/app/services/get.service';
+
 import { Comarca } from 'src/app/classes/comarca';
 
 @Component({
@@ -10,8 +13,13 @@ export class AppComponent {
   title = 'Prueba frontend SDG Group';
 
   comarcaActual: Comarca;
-
-  cambioComarca(comarca:Comarca): void{
+  listaComarcas: any;
+  
+  cambioComarca(comarca: Comarca): void{
     this.comarcaActual = comarca;
+    console.log(comarca);
+  }
+  enviaComarcas(comarcas: any): void{
+    this.listaComarcas = comarcas;
   }
 }
