@@ -1,4 +1,3 @@
-
 export interface Comarca {
     id: string;
     nombre: string;

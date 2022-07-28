@@ -1,24 +1,26 @@
 ul{
-    margin: 2px;
+    margin: 0px;
     padding: 0;
-    margin-left: 3px;
+    margin-left: 1px;
+    margin-bottom: 2px;
 }
 li{
     
-    background-color: blue;
+    background-color: #808080;
     color: white;
     
     cursor: pointer;
 
     padding: .1em;
     border-left: 4px solid transparent;
+    
 }
 li:hover{
     color: yellow;
     border-left: 4px solid #bfb1c1;
 }
 h2{    
-    background-color: blue;
+    background-color: #808080;
     color: white;
 
     display: flex;
@@ -26,5 +28,6 @@ h2{
     justify-content: center;
     
     margin-bottom: 1px;
-    margin-top: 4px;
+    margin-top: 1px;
+    margin-left: 1px;
 }

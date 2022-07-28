@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
+import { ComarcasTotalComponent } from './components/comarcas-total/comarcas-total.component';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: 'home', component: AppComponent },
+  { path: 'home', component: ComarcasTotalComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
 ];

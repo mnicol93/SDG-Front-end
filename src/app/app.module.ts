@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
@@ -26,6 +27,9 @@ import { ChartComponent } from './components/chart/chart.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
+import { ComarcasTotalComponent } from './components/comarcas-total/comarcas-total.component';
+import { ComarcasMasculinoComponent } from './components/comarcas-masculino/comarcas-masculino.component';
+import { ComarcasFemeninoComponent } from './components/comarcas-femenino/comarcas-femenino.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,10 @@ import { NotFoundComponent } from './components/shared/not-found/not-found.compo
     ChartComponent,
     NavbarComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ComarcasTotalComponent,
+    ComarcasMasculinoComponent,
+    ComarcasFemeninoComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +56,7 @@ import { NotFoundComponent } from './components/shared/not-found/not-found.compo
     MatToolbarModule,
     MatListModule,
     MatButtonModule,
+    MatButtonToggleModule,
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,

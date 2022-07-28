@@ -17,7 +17,6 @@ export class AppComponent {
   
   cambioComarca(comarca: Comarca): void{
     this.comarcaActual = comarca;
-    console.log(comarca);
   }
   enviaComarcas(comarcas: any): void{
     this.listaComarcas = comarcas;

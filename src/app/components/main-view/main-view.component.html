@@ -4,22 +4,7 @@
     <app-chart
         [comarca]="comarca"
     ></app-chart>
-
-  
-    Masculino: 
-    {{ comarca['cross:DataSet']['cross:Section']['cross:Obs'][0].OBS_VALUE }}
-    <br />
-    Femenino: 
-    {{ comarca['cross:DataSet']['cross:Section']['cross:Obs'][1].OBS_VALUE }}
-    <br />
-    <b>Total:
-    {{ comarca['cross:DataSet']['cross:Section']['cross:Obs'][2].OBS_VALUE }}
-    </b>
 </p>
-<ng-template #noComarca>    <li 
-    class="lista-grupo-comarcas"
-    *ngFor="let comarca of listaComarcas.feed.entry"
-    title="{{ comarca.title }}"
-    >
-        {{ comarca.title }}
-</li></ng-template>
+<ng-template #noComarca>   
+    <app-chart [listaComarcas]="listaComarcas"></app-chart>
+</ng-template>

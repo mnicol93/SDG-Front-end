@@ -1,3 +1,4 @@
+import { CdkPortal } from '@angular/cdk/portal';
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Comarca } from 'src/app/classes/comarca';
@@ -10,6 +11,7 @@ import { Comarca } from 'src/app/classes/comarca';
 
 export class ChartComponent implements OnInit {
   @Input() comarca: any;
+  @Input() listaComarcas: any;
 
   options: Highcharts.Options = { // required
     chart: {
@@ -17,15 +19,15 @@ export class ChartComponent implements OnInit {
     },
     title: { text: "Vacio"},
     xAxis: {
-      categories: ['Una'],
+      categories: [],
       title: { text: 'Comarcas' }
     },
     yAxis: {
-      categories: ['Dis'],
+      categories: [],
       title: { text: 'Habitantes' }
     },
     series: [{
-      name: 'Habitantes por genero por comarca',
+      name: 'Habitantes por comarca',
       data: [],
       type: 'bar'
     }]
@@ -43,25 +45,16 @@ export class ChartComponent implements OnInit {
   updateFlag: boolean = false;
   // Funcion que devuelve el objeto chart (this). 
   chartCallback: Highcharts.ChartCallbackFunction = (chart) => {
-
   }
 
   constructor() { }
 
   ngOnInit(): void {
-
+    this.updateTotal();
   }
 
   ngOnChanges(changes: SimpleChange): void {
-    if(this.comarca != 'undefined'){
-      if(typeof this.comarca != 'object'){
-        // LLama a updateChart para una Comarca.
-        this.updateChart();
-      }else{
-        // Llama updateChart para todas las Comarcas.
-        this.updateChartTotal();
-      }
-    }
+      this.updateChart();
   }
 
   updateChart(){
@@ -94,34 +87,40 @@ export class ChartComponent implements OnInit {
       }]
     }; 
   }
-  updateChartTotal(){
-    // Convierte a type: number; para mostrar en el grafico
-    let masculino: number = +this.comarca['cross:DataSet']['cross:Section']['cross:Obs'][0].OBS_VALUE;
-    let femenino: number = +this.comarca['cross:DataSet']['cross:Section']['cross:Obs'][1].OBS_VALUE;
-    let total: number = +this.comarca['cross:DataSet']['cross:Section']['cross:Obs'][2].OBS_VALUE;
+  updateTotal(){
+    if(this.listaComarcas.feed.entry.length > 0){
+      // Array para guardas las comarcas y los habitantes.
+      let comarcasGraf: string[] = [];
+      let habitantes: number[] = [];
+
+      // Extrae cada comarca/habitantes
+      this.listaComarcas.feed.entry.forEach(comarca => {
+        comarcasGraf.push(comarca.title);
+        habitantes.push(
+          +comarca['cross:DataSet']['cross:Section']['cross:Obs'][2].OBS_VALUE
+          )
+        console.log(comarcasGraf + ' '+ habitantes)
+      });
 
     this.chartOptions = { // required
       chart: {
         renderTo: 'container'
       },
-      title: { text: this.comarca.title },
+      title: { text: "Habitantes totales por Comarca" },
       xAxis: {
-        categories: ['Masculino', 'Femenino', 'Total'],
+        categories: comarcasGraf,
         title: { text: 'Comarcas' }
       },
       yAxis: {
-        categories: ['masc', 'fem', 'total'],
+        categories: [],
         title: { text: 'Habitantes' }
       },
       series: [{
-        name: 'Habitantes por genero por comarca',
-        data: [ 
-          masculino,
-          femenino,
-          total
-        ],
+        name: 'Habitantes totales por comarca',
+        data: habitantes,
         type: 'bar'
       }]
     }; 
+    }
   }
 }
