@@ -1,1 +1,15 @@
-<p>comarcas-total works!</p>
+<div id="app">
+    <app-menu 
+        id="menu"
+        (clickedComarca)="cambioComarca($event)"
+        (totalComarcas)="enviaComarcas($event)"
+    >
+    </app-menu>
+    <app-main-view 
+        id="main-view"
+        [comarca]="comarcaActual"
+        [listaComarcas]="listaComarcas"
+        [genero]="'Total'"
+        >
+    </app-main-view>
+</div>

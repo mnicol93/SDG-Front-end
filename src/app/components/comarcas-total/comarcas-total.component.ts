@@ -1,19 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Comarca } from 'src/app/classes/comarca';
-
 @Component({
   selector: 'app-comarcas-total',
   templateUrl: './comarcas-total.component.html',
-  styleUrls: ['./comarcas-total.component.css']
+  styleUrls: ['../comarcas.css']
 })
 export class ComarcasTotalComponent implements OnInit {
 
-  comarca: Comarca;
+  comarcaActual: Comarca;
+  listaComarcas: any;
+  
+  cambioComarca(comarca: Comarca): void{
+    this.comarcaActual = comarca;
+  }
+  enviaComarcas(comarcas: any): void{
+    this.listaComarcas = comarcas;
+  }
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
