@@ -1,0 +1,18 @@
+.navbar{
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+.titulo{
+    margin-right: 10px;
+    flex: .5;
+}
+.repository{
+    position: relative;
+    flex: .1;
+}
+.enlaces{
+    flex: 2.5;
+}

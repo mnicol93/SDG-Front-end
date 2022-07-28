@@ -1,0 +1,30 @@
+:host{
+    height: 100%;
+}
+
+#app{
+    height:100%;
+    display: flex;
+    flex-direction: row;
+
+    overflow: hidden;
+}
+
+/* Para pantallas pequenas, flex-direction sera column en vez de row */
+@media screen and (max-width: 400px){
+    #app{
+        flex-direction: column; 
+    }
+}
+
+#menu{
+    height: 100%;
+    flex: .5;
+    /* Para el menu quiero que haya una barra para hacer scroll en caso
+       de haber muchas provincias. */
+    overflow: auto;
+}
+#main-view{
+    height: 100%;
+    flex: 2;
+}
