@@ -1,3 +1,17 @@
 .navbar{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: space-between;
+}
+.titulo{
+    margin-right: 10px;
+    flex: .5;
+}
+.repository{
+    position: relative;
+    flex: .2;
+}
+.enlaces{
+    flex: 2.5;
 }
