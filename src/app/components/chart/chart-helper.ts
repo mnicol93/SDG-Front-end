@@ -1,4 +1,6 @@
-export function updateChart(comarca: any): Highcharts.Options{
+import { error } from "highcharts";
+
+export function updateChart(comarca: any, genero: string): Highcharts.Options{
     // Convierte a type: number; para mostrar en el grafico
     let masculino: number = +comarca['cross:DataSet']['cross:Section']['cross:Obs'][0].OBS_VALUE;
     let femenino: number = +comarca['cross:DataSet']['cross:Section']['cross:Obs'][1].OBS_VALUE;
@@ -10,7 +12,7 @@ export function updateChart(comarca: any): Highcharts.Options{
       },
       title: { text: this.comarca.title },
       xAxis: {
-        categories: ['Masculino', 'Femenino', 'Total'],
+        categories: [genero],
         title: { text: 'Comarcas' }
       },
       yAxis: {
@@ -18,7 +20,7 @@ export function updateChart(comarca: any): Highcharts.Options{
         title: { text: 'Habitantes' }
       },
       series: [{
-        name: 'Habitantes por genero por comarca',
+        name: `Habitantes genero ${genero} por comarca`,
         data: [ 
           masculino,
           femenino,
@@ -28,26 +30,45 @@ export function updateChart(comarca: any): Highcharts.Options{
       }]
     }; 
   }
- export function updateTotal(listaComarcas: any): Highcharts.Options{
+ export function updateTotal(listaComarcas: any, genero: string): Highcharts.Options{
     if(listaComarcas.feed.entry.length > 0){
-      // Array para guardas las comarcas y los habitantes.
+      // Array para guardar las comarcas y los habitantes.
       let comarcasGraf: string[] = [];
       let habitantes: number[] = [];
+      
+      let ARRAY_GENERO: number;
+      let TITULO_GENERO: string;
+      
+      switch(genero){
+        case 'Total':
+            ARRAY_GENERO = 2;
+            TITULO_GENERO = 'totales';
+            break;
+        case 'Femenino':
+            ARRAY_GENERO = 1;
+            TITULO_GENERO = 'de genero femenino';
+            break;
+        case 'Masculino':
+            ARRAY_GENERO = 0;
+            TITULO_GENERO = 'de genero masculino';
+            break;
+        default:
+            throw new Error('Genero no identificado');            
+      }
 
       // Extrae cada comarca/habitantes
       listaComarcas.feed.entry.forEach(comarca => {
         comarcasGraf.push(comarca.title);
         habitantes.push(
-          +comarca['cross:DataSet']['cross:Section']['cross:Obs'][2].OBS_VALUE
+          +comarca['cross:DataSet']['cross:Section']['cross:Obs'][ARRAY_GENERO].OBS_VALUE
           )
-        console.log(comarcasGraf + ' '+ habitantes)
       });
 
     return { // required
       chart: {
         renderTo: 'container'
       },
-      title: { text: "Habitantes totales por Comarca" },
+      title: { text: `Habitantes ${TITULO_GENERO} por Comarca` },
       xAxis: {
         categories: comarcasGraf,
         title: { text: 'Comarcas' }
@@ -57,7 +78,7 @@ export function updateChart(comarca: any): Highcharts.Options{
         title: { text: 'Habitantes' }
       },
       series: [{
-        name: 'Habitantes totales por comarca',
+        name: `Habitantes por comarca`,
         data: habitantes,
         type: 'bar'
       }]

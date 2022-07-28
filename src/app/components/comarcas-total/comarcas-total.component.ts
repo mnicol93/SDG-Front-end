@@ -10,6 +10,7 @@ export class ComarcasTotalComponent implements OnInit {
 
   comarcaActual: Comarca;
   listaComarcas: any;
+  genero: string = 'Total';
   
   cambioComarca(comarca: Comarca): void{
     this.comarcaActual = comarca;

@@ -11,7 +11,8 @@ export class ComarcasMasculinoComponent implements OnInit {
 
   comarcaActual: Comarca;
   listaComarcas: any;
-  
+  genero: string = 'Masculino';
+   
   cambioComarca(comarca: Comarca): void{
     this.comarcaActual = comarca;
   }

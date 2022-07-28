@@ -3,8 +3,12 @@
 >
     <app-chart
         [comarca]="comarca"
+        [genero]="genero"
     ></app-chart>
 </p>
 <ng-template #noComarca>   
-    <app-chart [listaComarcas]="listaComarcas"></app-chart>
+    <app-chart 
+        [listaComarcas]="listaComarcas"
+        [genero]="genero">
+    </app-chart>
 </ng-template>

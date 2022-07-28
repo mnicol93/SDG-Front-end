@@ -10,6 +10,7 @@ export class ComarcasFemeninoComponent implements OnInit {
   
   comarcaActual: Comarca;
   listaComarcas: any;
+  genero: string = 'Femenino';
   
   cambioComarca(comarca: Comarca): void{
     this.comarcaActual = comarca;

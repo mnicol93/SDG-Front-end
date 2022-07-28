@@ -12,6 +12,10 @@ import { updateTotal, updateChart } from './chart-helper';
 export class ChartComponent implements OnInit {
   @Input() comarca: any;
   @Input() listaComarcas: any;
+  @Input() genero: string;
+
+  private comarcasGraf: string[];
+  private habitantes: number[];
 
   options: Highcharts.Options = { // required
     chart: {
@@ -50,11 +54,11 @@ export class ChartComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.chartOptions = updateTotal(this.listaComarcas);
+    this.chartOptions = updateTotal(this.listaComarcas, this.genero);
   }
 
   ngOnChanges(changes: SimpleChange): void {
-    this.chartOptions = updateChart(this.comarca);
+    this.chartOptions = updateChart(this.comarca, this.genero);
   }
 
     // updateChart(){
