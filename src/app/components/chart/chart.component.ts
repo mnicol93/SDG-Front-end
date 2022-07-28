@@ -14,9 +14,6 @@ export class ChartComponent implements OnInit {
   @Input() listaComarcas: any;
   @Input() genero: string;
 
-  private comarcasGraf: string[];
-  private habitantes: number[];
-
   options: Highcharts.Options = { // required
     chart: {
       renderTo: 'container'
@@ -60,35 +57,4 @@ export class ChartComponent implements OnInit {
   ngOnChanges(changes: SimpleChange): void {
     this.chartOptions = updateChart(this.comarca, this.genero);
   }
-
-    // updateChart(){
-    //   // Convierte a type: number; para mostrar en el grafico
-    //   let masculino: number = +this.comarca['cross:DataSet']['cross:Section']['cross:Obs'][0].OBS_VALUE;
-    //   let femenino: number = +this.comarca['cross:DataSet']['cross:Section']['cross:Obs'][1].OBS_VALUE;
-    //   let total: number = +this.comarca['cross:DataSet']['cross:Section']['cross:Obs'][2].OBS_VALUE;
-
-    //   this.chartOptions = { // required
-    //     chart: {
-    //       renderTo: 'container'
-    //     },
-    //     title: { text: this.comarca.title },
-    //     xAxis: {
-    //       categories: ['Masculino', 'Femenino', 'Total'],
-    //       title: { text: 'Comarcas' }
-    //     },
-    //     yAxis: {
-    //       categories: ['masc', 'fem', 'total'],
-    //       title: { text: 'Habitantes' }
-    //     },
-    //     series: [{
-    //       name: 'Habitantes por genero por comarca',
-    //       data: [ 
-    //         masculino,
-    //         femenino,
-    //         total
-    //       ],
-    //       type: 'bar'
-    //     }]
-    //   }; 
-    // }
 }
