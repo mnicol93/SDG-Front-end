@@ -9,19 +9,16 @@ import { Comarca } from 'src/app/classes/comarca';
 export class MenuComponent implements OnInit {
 
   public comarcas: any;
-  public hayCambio: boolean;
+  public selected: boolean;
   // Envia informacion a otro Componente
   @Output() clickedComarca: EventEmitter<any> = new EventEmitter();
   @Output() totalComarcas: EventEmitter<any> = new EventEmitter();
-  @Output() cambio: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private service:GetService) { 
     this.comarcas = []
-    this.hayCambio = !this.hayCambio;
   }
 
   clickComarca(comarca: any): void {
-    this.cambio.emit(!this.hayCambio)
     this.clickedComarca.emit(comarca);
   }
 

@@ -6,8 +6,8 @@ ul{
 }
 li{
     
-    background-color: #808080;
-    color: white;
+    background-color: #9fa2a3;
+    color: black;
     
     cursor: pointer;
 
@@ -16,18 +16,18 @@ li{
     
 }
 li:hover{
-    color: yellow;
-    border-left: 4px solid #bfb1c1;
+    color: rgb(80, 80, 16);
+    border-left: 4px solid #6b5b6d;
 }
 h2{    
-    background-color: #808080;
-    color: white;
+    background-color: #9fa2a3;
+    color: black;
 
     display: flex;
     align-items: center;
     justify-content: center;
     
-    margin-bottom: 1px;
-    margin-top: 1px;
+    margin-bottom: 0;
+    margin-top: 0;
     margin-left: 1px;
 }

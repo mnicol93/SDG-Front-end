@@ -53,7 +53,7 @@ export class ChartComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.chartOptions = updateTotal(this.listaComarcas, this.genero);
+    this.chartOptions = updateTotal(this.listaComarcas, this.genero, this.filtroComarcas);
   }
 
   ngOnChanges(changes: SimpleChange): void {
@@ -65,7 +65,6 @@ export class ChartComponent implements OnInit {
       // Si lo encuentra, devuelve array sin el titulo.
       this.filtroComarcas = this.filtroComarcas.filter(com => com != this.comarca.title);
     }
-    console.log(this.filtroComarcas);
-    //this.chartOptions = updateChart(this.comarca);
+    this.chartOptions = updateTotal(this.listaComarcas, this.genero, this.filtroComarcas);
   }
 }

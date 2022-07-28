@@ -26,12 +26,13 @@ export function updateChart(comarca: any): Highcharts.Options{
       }]
     }; 
   }
- export function updateTotal(listaComarcas: any, genero: string): Highcharts.Options{
+ export function updateTotal(listaComarcas: any, genero: string, filtro: string[]): Highcharts.Options{
     if(listaComarcas.feed.entry.length > 0){
       // Array para guardar las comarcas y los habitantes.
       let comarcasGraf: string[] = [];
       let habitantes: number[] = [];
-      
+      // Flag para controlar si elemento esta en el filtro
+      let flagFiltro: boolean = false;
       let ARRAY_GENERO: number;
       let TITULO_GENERO: string;
       
@@ -54,10 +55,18 @@ export function updateChart(comarca: any): Highcharts.Options{
 
       // Extrae cada comarca/habitantes
       listaComarcas.feed.entry.forEach(comarca => {
-        comarcasGraf.push(comarca.title);
-        habitantes.push(
-          +comarca['cross:DataSet']['cross:Section']['cross:Obs'][ARRAY_GENERO].OBS_VALUE
-          )
+        filtro.forEach(filt => {
+            if(filt == comarca.title){
+                flagFiltro=true;
+            }
+        })
+        if(!flagFiltro){
+            comarcasGraf.push(comarca.title);
+            habitantes.push(
+            +comarca['cross:DataSet']['cross:Section']['cross:Obs'][ARRAY_GENERO].OBS_VALUE
+            )
+        }
+        flagFiltro = false;
       });
 
     return { // required

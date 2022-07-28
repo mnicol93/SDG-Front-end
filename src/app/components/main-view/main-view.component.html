@@ -1,18 +1,8 @@
-<!-- <p
-    *ngIf="comarca; else noComarca"    
->
-    <app-chart
-        [comarca]="comarca"
-        [genero]="genero"
-    ></app-chart>
-</p>
-<ng-template #noComarca>   
-    <app-chart 
-        [listaComarcas]="listaComarcas"
-        [genero]="genero">
-    </app-chart>
-</ng-template> -->
+<br/>
+<br/>
+
 <app-chart 
+    class="grafico-principal"
     [listaComarcas]="listaComarcas"
     [comarca]="comarca"
     [genero]="genero">
