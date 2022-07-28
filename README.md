@@ -52,4 +52,14 @@ Dicha Informacion es extraida de la [API](https://www.idescat.cat/dev/api/) que 
         }
       },
       ```
+# La APP
 
+La aplicación consta de una barra de navegacion con enlaces a las tres vistas mediante Enrutamiento. El logo de github es un enlace directo a este repositorio.
+
+A la izquierda hay un Menú por el cual filtrar las comarcas; cuando se pulsa en una comarca se elimina del gráfico, y cuando se vuelve a pulsar vuelve a aparecer. Hay un pequeño bug por el cual hay que pulsar otra comarca antes de volver a añadir la comarca anteriormente eliminada.
+
+También he añadido los ficheros de environment, ya que estos no contienen ninguna información sensible, tan solo la URL para hacer las llamadas a la API.
+
+# Como probar la aplicación
+
+Después de clonar el repositorio, ejecutar el comando ```npm install```. A continuación, el comando ```npm start``` ejecutará la aplicación en el puerto ```4200```, y se podrá acceder a ella mediante el navegador en la dirección ```localhost:4200```.
