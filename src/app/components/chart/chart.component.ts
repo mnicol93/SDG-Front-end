@@ -14,6 +14,8 @@ export class ChartComponent implements OnInit {
   @Input() listaComarcas: any;
   @Input() genero: string;
 
+  filtroComarcas: string[] = [];
+
   options: Highcharts.Options = { // required
     chart: {
       renderTo: 'container'
@@ -55,6 +57,15 @@ export class ChartComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChange): void {
-    this.chartOptions = updateChart(this.comarca, this.genero);
+    let found: any = this.filtroComarcas.find(element => element == this.comarca.title);
+    if(typeof found === 'undefined'){
+      // Si no encuentra el titulo, push al filtro.
+      this.filtroComarcas.push(this.comarca.title);
+    }else{
+      // Si lo encuentra, devuelve array sin el titulo.
+      this.filtroComarcas = this.filtroComarcas.filter(com => com != this.comarca.title);
+    }
+    console.log(this.filtroComarcas);
+    //this.chartOptions = updateChart(this.comarca);
   }
 }
